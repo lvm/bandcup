@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>youtube-dl front end</title>
+    <title>bandcamp-dl front end</title>
     <!-- Bootstrap core CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <style>
@@ -62,9 +62,9 @@
   </head>
   <body class="text-center">
     <form class="form-dl" method="get" action="">
-      <h1 class="h3 mb-3 font-weight-normal">youtube-dl front end</h1>
-      <label for="input-video" class="sr-only">Video URL</label>
-      <input type="text" id="input-video" class="form-control" placeholder="https://..." required autofocus>
+      <h1 class="h3 mb-3 font-weight-normal">bandcamp-dl front end</h1>
+      <label for="input-album" class="sr-only">Album URL</label>
+      <input type="text" id="input-album" class="form-control" placeholder="https://..." required autofocus>
       <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Download</button>
       <br>
@@ -73,7 +73,7 @@
   </body>
   <script>
     var form = document.querySelector("form"),
-	inputVideo = document.querySelector("#input-video"),
+	inputAlbum = document.querySelector("#input-album"),
 	fetchResult = document.querySelector("#fetch-result")
     ;
 
@@ -105,8 +105,9 @@
 
     form.addEventListener("submit", function(evt) {
 	evt.preventDefault();
+	fetchResult.innerHTML = "⏳";
 	do_POST('/api/download/',
-		{video: encodeURIComponent(inputVideo.value)});
+		{album: encodeURIComponent(inputAlbum.value)});
     })
     ;
   </script>

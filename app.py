@@ -21,12 +21,12 @@ def index() -> str:
 @app.route('/api/download/', methods=['POST'])
 def api() -> str:
     status = 'bad'
-    message = 'no video provided'
+    message = 'no album provided'
 
     data = request.get_json()
-    if data['video']:
-        video = urllib.parse.unquote(data['video'])
-        task = celery.send_task('tasks.download', args=[video])
+    if data['album']:
+        album = urllib.parse.unquote(data['album'])
+        task = celery.send_task('tasks.download', args=[album])
         status = 'ok'
         message = url_for('task', task_id=task.id, external=True)
 

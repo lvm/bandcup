@@ -8,11 +8,10 @@ services:
         GID: ${GID:-1000}
     env_file:
       - ./env
-    image: lvm-vackup
+    image: lvm-bandcup
     restart: unless-stopped
     command: ./entrypoint.sh
     volumes:
-      - ./download/:/download/
       - .:/app/
     ports:
       - "5000:5000"
@@ -24,7 +23,7 @@ services:
       args:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
-    image: lvm-vackup-q
+    image: lvm-bandcup-q
     env_file:
       - ./env
     volumes:
@@ -39,7 +38,7 @@ services:
       args:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
-    image: lvm-vackup-mon
+    image: lvm-bandcup-mon
     env_file:
       - ./env
     restart: unless-stopped
